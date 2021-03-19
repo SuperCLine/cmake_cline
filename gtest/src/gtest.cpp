@@ -15,15 +15,14 @@ int main()
 	if (!logger->init(cur_path.c_str()))
 		return -2;
 
-	logger->logf(ELT_DEBUG, "core", "%s", "debug color");
-	logger->logf(ELT_INFO, "core", "%s", "info color");
-	logger->logf(ELT_ERROR, "core", "%s", "error color");
-	logger->logf(ELT_PERF, "core", "%s", "per color");
-
-	// make sure log finish by thread
-	core_thread::sleep(10);
+	logger->logf(ELogType::Debug, "core", "%s", "debug color");
+	logger->logf(ELogType::Info, "core", "%s", "info color");
+	logger->logf(ELogType::Error, "core", "%s", "error color");
+	logger->logf(ELogType::Perf, "core", "%s", "per color");
 
 	unload_module_log(logger);
+
+	system("pause");
 
 	return 0;
 }
